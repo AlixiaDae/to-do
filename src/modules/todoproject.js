@@ -1,4 +1,4 @@
-const TodoProject = (name) => {
+const TodoProject = (name,description) => {
     let project = []
     let todosToday = []
     let todosThisWeek = []
