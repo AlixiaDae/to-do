@@ -2,11 +2,6 @@
     --nav-bar-color: rgb(216, 243, 252)
 }
 
-@font-face {
-    font-family: 'CuteFont';
-    src: url('./CuteFont-Regular.ttf');
-}
-
 body {
     margin: 0;
     min-height: 100vh;
@@ -20,20 +15,20 @@ body {
 
 .nav-bar {
     background-color: var(--nav-bar-color);
-    padding: 20px;
     position: relative;
+    overflow: hidden;
 }
 
 h1 {
-    font-family: 'CuteFont';
-    margin-bottom: 0px;
-    margin-left: 25px;
-    font-size: 50px;
+    margin-bottom: 20px;
+    font-size: 40px;
+    text-align: center;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .nav-bar > :nth-child(2) {
     height: 50px;
-    margin-left: 55px;
+    margin-left: 65px;
     background-color: transparent;
     background: url('./images/clipboard.png') no-repeat left; 
     background-position: 10px;
@@ -46,16 +41,32 @@ h1 {
 
 .projects-menu {
     position: absolute;
-    right: 20px;
-    width: 200px;
     background-color: rgb(143, 205, 226);
-    padding: 10px;
-    border-radius: 10px;
+    border-radius: 5px;
+    overflow:hidden;
+    width: 100%;
+    height: 0;
+    transition:height 0.3s ease-in-out;
+    transition-delay: 0.1s;
 }
 
-#create-new-project {
+.projects-menu.active {
+    height: 200px;
+    transition: height .3s ease-in-out;
+}
+
+.projects-menu > button {
     background-color: transparent;
     border-style: none;
+    font-size: 20px;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    color: white;
+}
+
+.projects-menu > button:hover {
+    background-color: rgb(127, 181, 199);
 }
 
 .nav-bar > :nth-child(2):hover {

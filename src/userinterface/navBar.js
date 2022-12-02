@@ -9,7 +9,7 @@ const nav = () => {
     const projectsBtn = document.createElement('button')
     projectsBtn.textContent = 'Projects'
     projectsBtn.addEventListener('click', () => {
-
+        document.querySelector('.projects-menu').classList.toggle('active')
     })
     navBar.appendChild(projectsBtn)
 
