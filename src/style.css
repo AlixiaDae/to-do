@@ -1,8 +1,67 @@
+:root {
+    --nav-bar-color: rgb(216, 243, 252)
+}
+
+@font-face {
+    font-family: 'CuteFont';
+    src: url('./CuteFont-Regular.ttf');
+}
+
 body {
     margin: 0;
     min-height: 100vh;
+    display: flex;
 }
 
 .main {
-    background-color: pink;
+    display: grid;
+    grid-template-columns: minmax(350px, 1fr) 3fr;
+}
+
+.nav-bar {
+    background-color: var(--nav-bar-color);
+    padding: 20px;
+    position: relative;
+}
+
+h1 {
+    font-family: 'CuteFont';
+    margin-bottom: 0px;
+    margin-left: 25px;
+    font-size: 50px;
+}
+
+.nav-bar > :nth-child(2) {
+    height: 50px;
+    margin-left: 55px;
+    background-color: transparent;
+    background: url('./images/clipboard.png') no-repeat left; 
+    background-position: 10px;
+    padding: 12px 12px 12px 40px;
+    background-size: 30px;
+    border-radius: 15px;
+    border-style: none;
+    font-size: 20px;
+}
+
+.projects-menu {
+    position: absolute;
+    right: 20px;
+    width: 200px;
+    background-color: rgb(143, 205, 226);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#create-new-project {
+    background-color: transparent;
+    border-style: none;
+}
+
+.nav-bar > :nth-child(2):hover {
+    background-color: rgb(187, 210, 218);
+}
+
+.nav-bar > :nth-child(2):active {
+    background-color: rgb(164, 184, 190);
 }

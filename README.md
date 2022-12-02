@@ -19,3 +19,8 @@ Todo project from <a href="https://www.theodinproject.com/lessons/node-path-java
     1. localStorage (docs here) allows you to save data on the user’s computer. The downside here is that the data is ONLY accessible on the computer that it was created on. Even so, it’s pretty handy! Set up a function that saves the projects (and todos) to localStorage every time a new project (or todo) is created, and another function that looks for that data in localStorage when your app is first loaded. Additionally, here are a couple of quick tips to help you not get tripped up:
         Make sure your app doesn’t crash if the data you may want retrieve from localStorage isn’t there!
         localStorage uses JSON to send and store data, and when you retrieve the data, it will also be in JSON format. You will learn more about this language in a later lesson, but it doesn’t hurt to get your feet wet now. Keep in mind you cannot store functions in JSON, so you’ll have to figure out how to add methods back to your object properties once you fetch them. Good luck!
+
+
+Credits
+
+<a target="_blank" href="https://icons8.com/icon/UGtnrA3CKHUb/clipboard">Clipboard</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>

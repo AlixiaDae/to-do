@@ -1,7 +1,5 @@
-import TodoProject from "./todoproject";
-import Todo from "./todo";
-import nav from "./navBar";
 import '../style.css'
+import nav from './navBar'
 
 const dom = (() => {
     const main = document.createElement('div')
