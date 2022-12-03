@@ -47,7 +47,31 @@ const dom = (() => {
     const createNewProjectBtn = document.createElement('button')
     createNewProjectBtn.id = 'create-new-project'
     createNewProjectBtn.textContent = '+ New Project'
+    createNewProjectBtn.addEventListener('click', showForm())
     projectsMenu.appendChild(createNewProjectBtn)
+
+    const projectForm = document.createElement('form')
+    projectForm.id = 'new-project-form'
+    main.appendChild(projectForm)
+
+    const projectFormHeader = document.createElement('h2')
+    projectFormHeader.textContent = 'New Project'
+    projectForm.appendChild(projectFormHeader)
+
+    const projectNameWrapper = document.createElement('div')
+    projectForm.appendChild(projectNameWrapper)
+
+    const projectNameLabel = document.createElement('label')
+    projectNameLabel.textContent = 'Project Name: '
+    projectNameWrapper.appendChild(projectNameLabel)
+
+    const projectName = document.createElement('input')
+    projectName.placeholder = 'Your Project Name...'
+    projectNameWrapper.appendChild(projectName)
+
+    function showForm() {
+
+    }
 
     main.appendChild(sideBar)
 
