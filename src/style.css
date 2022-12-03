@@ -6,29 +6,34 @@ body {
     margin: 0;
     min-height: 100vh;
     display: flex;
+    text-align: center;
 }
 
 .main {
     display: grid;
-    grid-template-columns: minmax(350px, 1fr) 3fr;
+    grid-template-columns: minmax(380px, 1fr) 3fr;
+    justify-content: center;
+    text-align: center;
 }
 
-.nav-bar {
+.side-bar {
     background-color: var(--nav-bar-color);
-    position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
 }
 
 h1 {
     margin-bottom: 20px;
     font-size: 40px;
-    text-align: center;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    width: 160px;
 }
 
-.nav-bar > :nth-child(2) {
+.side-bar > :nth-child(2) {
     height: 50px;
-    margin-left: 65px;
     background-color: transparent;
     background: url('./images/clipboard.png') no-repeat left; 
     background-position: 10px;
@@ -41,7 +46,12 @@ h1 {
 
 .projects-menu {
     position: absolute;
+    top: 200px;
+    right: 0;
+    left: 0;
+    text-align: center;
     background-color: rgb(143, 205, 226);
+    padding: 0;
     border-radius: 5px;
     overflow:hidden;
     width: 100%;
@@ -53,6 +63,7 @@ h1 {
 .projects-menu.active {
     height: 200px;
     transition: height .3s ease-in-out;
+
 }
 
 .projects-menu > button {
@@ -69,10 +80,10 @@ h1 {
     background-color: rgb(127, 181, 199);
 }
 
-.nav-bar > :nth-child(2):hover {
+.side-bar > :nth-child(2):hover {
     background-color: rgb(187, 210, 218);
 }
 
-.nav-bar > :nth-child(2):active {
+.side-bar > :nth-child(2):active {
     background-color: rgb(164, 184, 190);
 }
