@@ -1,11 +1,12 @@
 :root {
-    --nav-bar-color: rgb(216, 243, 252)
+    --nav-bar-color: #70BCFF
 }
 
 body {
     margin: 0;
     min-height: 100vh;
     display: flex;
+    position: relative;
 }
 
 .main {
@@ -14,10 +15,7 @@ body {
     width: 100vw;
 }
 
-.content {
-    grid-area: 1/2;
-    position: relative;
-}
+/*SideBar*/
 
 .side-bar {
     background-color: var(--nav-bar-color);
@@ -52,7 +50,7 @@ h1 {
     right: 0;
     left: 0;
     text-align: center;
-    background-color: rgb(143, 205, 226);
+    background-color: #5ea2dd;
     padding: 0;
     height: 0;
     border-radius: 5px;
@@ -80,21 +78,12 @@ h1 {
     font-weight: bold;
 }
 
-.content-screen {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.096);
-    opacity: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: opacity .3s ease;
-}
+/* Form */
 
 #new-project-form {
+    position: absolute;
+    top: 30%;
+    left: 50%;
     padding: 20px;
     background-color: white;
     box-shadow: 2px 2px 3px 2px lightgrey;
@@ -105,6 +94,9 @@ h1 {
     align-items: center;
     height: 320px;
     width: 280px;
+    opacity: 0;
+    display: none;
+    transition: opacity .4s ease;
 }
 
 h2 {
@@ -143,12 +135,34 @@ h2 {
     margin-top: 10px;
 }
 
+/*Content*/
+
+.content {
+    grid-area: 1/2;
+    position: relative;
+    padding: 30px;
+    filter: none;
+}
+
+.content.blur {
+    filter: blur(3px);
+    background-color: rgb(148, 148, 148);
+}
+
+.todos-content > button {
+    padding: 10px;
+    font-size: 20px;
+    background-color: rgb(154, 212, 231);
+    border-style: none;
+}
+
 .projects-menu > button:hover {
-    background-color: rgb(127, 181, 199);
+    background-color: var(--nav-bar-color);
+    transition: .3s;
 }
 
 .side-bar > :nth-child(2):hover {
-    background-color: rgb(187, 210, 218);
+    background-color: #65a8e2;
 }
 
 .side-bar > :nth-child(2):active {
@@ -158,3 +172,11 @@ h2 {
 #new-project-form > button:hover {
     background-color: rgb(182, 182, 182);
 }
+
+.todos-content > button:hover {
+    background-color: rgb(134, 187, 204);
+    box-shadow: 3px 3px 3px rgb(117, 163, 179);
+}
+
+
+

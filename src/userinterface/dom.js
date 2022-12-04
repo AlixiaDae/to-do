@@ -1,6 +1,7 @@
 import Projects from '../modules/projects'
 import TodoProject from '../modules/todoproject'
 import '../style.css'
+import domTodos from './domtodos'
 
 const dom = (() => {
     const main = document.createElement('div')
@@ -9,10 +10,6 @@ const dom = (() => {
 
     const content = document.createElement('div')
     content.classList.add('content')
-
-    const contentScreen = document.createElement('div')
-    contentScreen.classList.add('content-screen')
-    content.appendChild(contentScreen)
 
     const projects = Projects()
 
@@ -52,8 +49,15 @@ const dom = (() => {
     createNewProjectBtn.id = 'create-new-project'
     createNewProjectBtn.textContent = '+ New Project'
     createNewProjectBtn.addEventListener('click', () => {
-        if(document.querySelector('.content-screen').style.opacity == '1') return
-        document.querySelector('.content-screen').style.opacity = '1'
+        if(projectForm.style.opacity == 0) {
+            projectForm.style.opacity = '1'
+            projectForm.style.display = 'block'
+            content.classList.toggle('blur')
+        } else { 
+            projectForm.style.opacity = '0'
+            projectForm.style.display = 'none'
+            content.classList.toggle('blur')
+        }
     })
 
     function createProjectBtns() {
@@ -64,9 +68,7 @@ const dom = (() => {
             projectBtn.id = 'project-' + i
             projectBtn.textContent = projects.getProjects()[i].getName()
             projectBtn.addEventListener('click', (e) => {
-                if(project.getTodos().length == 0) {
-                    
-                }
+                console.log(project.getTodos())
             })
             projectsMenu.appendChild(projectBtn)
         }
@@ -77,7 +79,7 @@ const dom = (() => {
 
     const projectForm = document.createElement('form')
     projectForm.id = 'new-project-form'
-    contentScreen.appendChild(projectForm)
+    document.body.appendChild(projectForm)
 
     const projectFormHeader = document.createElement('h2')
     projectFormHeader.textContent = 'New Project'
@@ -115,11 +117,12 @@ const dom = (() => {
         const newProject = TodoProject(name,description)
         projects.addProject(newProject)
         createProjectBtns()
-        contentScreen.style.opacity = '0'
     })
     projectForm.appendChild(projectFormBtn)
 
-    const addTodoBtn = document
+    
+
+    content.appendChild(domTodos())
 
 
     main.appendChild(sideBar)
