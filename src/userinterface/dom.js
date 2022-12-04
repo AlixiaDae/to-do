@@ -7,6 +7,13 @@ const dom = (() => {
     main.classList.add('main')
     document.body.appendChild(main)
 
+    const content = document.createElement('div')
+    content.classList.add('content')
+
+    const contentScreen = document.createElement('div')
+    contentScreen.classList.add('content-screen')
+    content.appendChild(contentScreen)
+
     const projects = Projects()
 
     //test projects
@@ -16,6 +23,10 @@ const dom = (() => {
 
     projects.addProject(firstProject)
     projects.addProject(secondProject)
+
+    console.log(firstProject.getTodos())
+
+    console.log(projects.getProjects().map(project => project.getName()))
 
     //sidebar
 
@@ -37,22 +48,36 @@ const dom = (() => {
     projectsMenu.classList.add('projects-menu')
     sideBar.appendChild(projectsMenu)
 
-    for(let i = 0; i < projects.getProjects().length; i++) {
-        const projectBtn = document.createElement('button')
-        projectBtn.id = 'project-' + i
-        projectBtn.textContent = projects.getProjects()[i].getProjectName()
-        projectsMenu.appendChild(projectBtn)
-    }
-
     const createNewProjectBtn = document.createElement('button')
     createNewProjectBtn.id = 'create-new-project'
     createNewProjectBtn.textContent = '+ New Project'
-    createNewProjectBtn.addEventListener('click', showForm())
-    projectsMenu.appendChild(createNewProjectBtn)
+    createNewProjectBtn.addEventListener('click', () => {
+        if(document.querySelector('.content-screen').style.opacity == '1') return
+        document.querySelector('.content-screen').style.opacity = '1'
+    })
+
+    function createProjectBtns() {
+        projectsMenu.textContent = ''
+        for(let i = 0; i < projects.getProjects().length; i++) {
+            const projectBtn = document.createElement('button')
+            const project = projects.getProject(projects.getProjects()[i].getName())
+            projectBtn.id = 'project-' + i
+            projectBtn.textContent = projects.getProjects()[i].getName()
+            projectBtn.addEventListener('click', (e) => {
+                if(project.getTodos().length == 0) {
+                    
+                }
+            })
+            projectsMenu.appendChild(projectBtn)
+        }
+        projectsMenu.appendChild(createNewProjectBtn)
+    }
+
+    createProjectBtns()
 
     const projectForm = document.createElement('form')
     projectForm.id = 'new-project-form'
-    main.appendChild(projectForm)
+    contentScreen.appendChild(projectForm)
 
     const projectFormHeader = document.createElement('h2')
     projectFormHeader.textContent = 'New Project'
@@ -69,11 +94,36 @@ const dom = (() => {
     projectName.placeholder = 'Your Project Name...'
     projectNameWrapper.appendChild(projectName)
 
-    function showForm() {
+    const projectDescriptionWrapper = document.createElement('div')
+    projectForm.appendChild(projectDescriptionWrapper)
 
-    }
+    const projectDescriptionLabel = document.createElement('label')
+    projectDescriptionLabel.textContent = 'Project Description: '
+    projectDescriptionWrapper.appendChild(projectDescriptionLabel)
+
+    const projectDescription = document.createElement('textarea')
+    projectDescription.placeholder = 'Describe your project here...'
+    projectDescription.classList.add('project-description')
+    projectDescriptionWrapper.appendChild(projectDescription)
+
+    const projectFormBtn = document.createElement('button')
+    projectFormBtn.textContent = 'Create Project'
+    projectFormBtn.addEventListener('click', (e) => {
+        e.preventDefault()
+        const name = projectName.value
+        const description = projectDescription.value
+        const newProject = TodoProject(name,description)
+        projects.addProject(newProject)
+        createProjectBtns()
+        contentScreen.style.opacity = '0'
+    })
+    projectForm.appendChild(projectFormBtn)
+
+    const addTodoBtn = document
+
 
     main.appendChild(sideBar)
+    main.appendChild(content)
 
 })()
 

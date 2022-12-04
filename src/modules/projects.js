@@ -4,11 +4,11 @@ const Projects = () => {
     const getProjects = () => projects
 
     const getProject = (projectName) => {
-       return projects.find(project => project.getProjectName() == projectName.getProjectName()).getProjectName()
+       return projects.find(project => project.getName() == projectName)
     }
 
     const addProject = (newProject) => {
-        if(projects.find(project => project.getProjectName() === newProject.name)) return
+        if(projects.find(project => project.getName() === newProject.name)) return
         projects.push(newProject)
     }
 

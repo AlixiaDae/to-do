@@ -10,7 +10,12 @@ body {
 
 .main {
     display: grid;
-    grid-template-columns: minmax(380px, 1fr) 3fr;
+    grid-template-columns: 350px 1fr;
+    width: 100vw;
+}
+
+.content {
+    grid-area: 1/2;
     position: relative;
 }
 
@@ -18,6 +23,7 @@ body {
     background-color: var(--nav-bar-color);
     overflow: hidden;
     position: relative;
+    grid-area: 1;
 }
 
 h1 {
@@ -32,7 +38,7 @@ h1 {
     width: 100%;
     background-color: transparent;
     background: url('./images/clipboard.png') no-repeat left; 
-    background-position: 120px;
+    background-position: 100px;
     background-size: 30px;
     border-style: none;
     font-size: 20px;
@@ -58,10 +64,10 @@ h1 {
 }
 
 .projects-menu.active {
-    height: 200px;
+    height: 500px;
     transition: height .3s ease-in-out;
-
 }
+
 
 .projects-menu > button {
     background-color: transparent;
@@ -74,19 +80,30 @@ h1 {
     font-weight: bold;
 }
 
-#new-project-form {
+.content-screen {
     position: absolute;
     top: 0;
-    left: 40%;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.096);
+    opacity: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity .3s ease;
+}
+
+#new-project-form {
     padding: 20px;
     background-color: white;
     box-shadow: 2px 2px 3px 2px lightgrey;
     border-radius: 10px;
     text-align: center;
     display: grid;
-    grid-template-rows: 50px repeat(3,1fr);
+    grid-template-rows: 50px repeat(2,90px);
     align-items: center;
-    height: 300px;
+    height: 320px;
     width: 280px;
 }
 
@@ -105,6 +122,27 @@ h2 {
     padding: 5px;
 }
 
+#new-project-form > div > textarea {
+    height: 80px;
+}
+
+.project-description {
+    height: 90px;
+    resize: none;
+    padding: 5px;
+}
+
+#new-project-form > button {
+    padding: 5px;
+    justify-self: center;
+    align-items: center;
+    width: 160px;
+    border-radius: 10px;
+    border-style: none;
+    box-shadow: 3px 3px 2px lightgrey;
+    margin-top: 10px;
+}
+
 .projects-menu > button:hover {
     background-color: rgb(127, 181, 199);
 }
@@ -115,4 +153,8 @@ h2 {
 
 .side-bar > :nth-child(2):active {
     background-color: rgb(164, 184, 190);
+}
+
+#new-project-form > button:hover {
+    background-color: rgb(182, 182, 182);
 }
